@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 11:10 PM
+-- Generation Time: Aug 16, 2021 at 04:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -59,7 +59,12 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`b_id`, `id_mem`, `b_mail`, `tel_mem`, `car_num`, `car_id`, `sv_id`, `stsv_id`, `year_car`, `mile`, `b_date`, `b_time`, `b_dateaction`) VALUES
-(33, 10, 'aaa@aaa.com', 'ssss', '52422', 1, 4, 1, 2558, 1395202, '2564-05-22', '21:06', '2021-07-14');
+(33, 10, 'aaa@aaa.com', 'ssss', '52422', 1, 4, 4, 2558, 1395202, '2564-05-22', '21:06', '2021-07-14'),
+(34, 10, 'kjnbkjb', 'ssss', 'ljjnjln', 2, 2, 1, 18755, 12547455, '2564-02-08', '01:00', '2021-07-21'),
+(35, 8, '', 'qqq', '', 2, 3, 2, 2559, 0, '2021-12-08', '05:40', '2021-08-03'),
+(36, 11, 'admin@mail.com', '1234567890', '1กม 7118', 2, 4, 1, 2558, 19800, '0000-00-00', '03:09', '2021-08-06'),
+(37, 11, 'tatasunainatata@gmail.com', '1234567890', '1กม 7118', 1, 3, 1, 2559, 20000, '3333-03-20', '02:12', '2021-08-06'),
+(38, 11, '', '1234567890', '', 1, 1, 1, 0, 0, '0000-00-00', '20:35', '2021-08-16');
 
 -- --------------------------------------------------------
 
@@ -135,10 +140,18 @@ CREATE TABLE `dataspare` (
   `sp_name` varchar(50) NOT NULL,
   `sp_price` int(8) NOT NULL,
   `sp_point` int(3) NOT NULL,
-  `sp_unit` int(11) NOT NULL,
+  `sp_unit` varchar(11) NOT NULL,
   `sptype_id` int(11) NOT NULL,
   `sp_balance` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dataspare`
+--
+
+INSERT INTO `dataspare` (`sp_id`, `sp_name`, `sp_price`, `sp_point`, `sp_unit`, `sptype_id`, `sp_balance`) VALUES
+(1, 'หม้อน้ำ', 8500, 5, 'หม้อน้ำ', 1, 25),
+(2, 'แบตเตอรี่', 1500, 2, 'ก้อน', 2, 10);
 
 -- --------------------------------------------------------
 
@@ -203,7 +216,10 @@ CREATE TABLE `serv_status` (
 
 INSERT INTO `serv_status` (`stsv_id`, `stsv_name`) VALUES
 (1, 'รอการประเมิน'),
-(2, 'กำลังดำเนินการ');
+(2, 'กำลังดำเนินการ'),
+(3, 'ตรวจสอบการชำระเงิน'),
+(4, 'ยืนยันการจอง'),
+(5, 'เสร็จสิ้น');
 
 -- --------------------------------------------------------
 
@@ -215,6 +231,14 @@ CREATE TABLE `spare_type` (
   `sptype_id` int(11) NOT NULL,
   `sptype_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `spare_type`
+--
+
+INSERT INTO `spare_type` (`sptype_id`, `sptype_name`) VALUES
+(1, 'หม้อน้ำ'),
+(2, 'แบตเตอรี่');
 
 -- --------------------------------------------------------
 
@@ -259,7 +283,8 @@ INSERT INTO `tb_mem` (`id_mem`, `name_mem`, `last_mem`, `userlevel`, `username`,
 (7, 'dfnbkjd', 'kjhfdjlkgh', 'สมาชิก', 'user2', '6074c6aa3488f3c2dddff2a7ca821aab', '0878754567', 'dopfgjhphpr'),
 (8, 'qqq', 'qqq1', 'สมาชิก', 'qqq', 'b2ca678b4c936f905fb82f2733f5297f', 'qqq', 'qqq'),
 (9, 'นาย', 'กรชิต', 'สมาชิก', 'nine99', 'd3eb9a9233e52948740d7eb8c3062d14', '0970895743', 'ดอนเมือง '),
-(10, 'ssss', 'ssss', 'สมาชิก', 'ssss', '8f60c8102d29fcd525162d02eed4566b', 'ssss', 'ssss');
+(10, 'ssss', 'ssss', 'สมาชิก', 'ssss', '8f60c8102d29fcd525162d02eed4566b', 'ssss', 'ssss'),
+(11, 'ad', 'min', 'สมาชิก', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', '1234567890', '123465487');
 
 --
 -- Indexes for dumped tables
@@ -351,7 +376,7 @@ ALTER TABLE `appoint`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `car_type`
@@ -375,7 +400,7 @@ ALTER TABLE `datacar`
 -- AUTO_INCREMENT for table `dataspare`
 --
 ALTER TABLE `dataspare`
-  MODIFY `sp_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `emp`
@@ -393,13 +418,13 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `serv_status`
 --
 ALTER TABLE `serv_status`
-  MODIFY `stsv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `stsv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `spare_type`
 --
 ALTER TABLE `spare_type`
-  MODIFY `sptype_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sptype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `supply`
@@ -411,7 +436,7 @@ ALTER TABLE `supply`
 -- AUTO_INCREMENT for table `tb_mem`
 --
 ALTER TABLE `tb_mem`
-  MODIFY `id_mem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_mem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
