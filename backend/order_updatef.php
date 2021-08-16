@@ -316,6 +316,7 @@ $sv_name = $row['sv_name'];
                                                 <span class="small">order <?php echo $b_id ?></span>
                                             </h2>
                                         </div>
+                                        <p class="mt--1"><a class="btn btn-primary btn-learn" href="spare.php"> <i class="icon-play4"></i> เพิ่มอะไหล่</a> </p>
                                     </div>
                                 </div>
                                 <hr>

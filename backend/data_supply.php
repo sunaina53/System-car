@@ -70,8 +70,7 @@ $result=mysqli_query($con,$sql);
                     $sup_tel=$rs['sup_tel'];
                     $sup_address=$rs['sup_address'];
                    
-                ?>
-                  
+                ?>     
                 </thead>
                 <tbody class="list">
                  

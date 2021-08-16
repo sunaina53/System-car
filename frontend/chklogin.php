@@ -27,7 +27,7 @@ session_start();
       if($_SESSION["userlevel"]=="แอดมิน"){ //ถ้าเป็น แอดมิน ให้กระโดดไปหน้า backend
 
          // echo "แอดมิน";
-        Header("Location: ../backend/login.php");
+        Header("Location: ../backend/maindata.php");
 
       }
 
