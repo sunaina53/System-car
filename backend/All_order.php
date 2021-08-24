@@ -1,10 +1,10 @@
 <?php
 include "../conn.php";
 
-$sql = "SELECT booking.b_id,tb_mem.name_mem,serv_status.stsv_name,booking.b_date
-FROM((booking INNER JOIN tb_mem on booking.id_mem=tb_mem.id_mem) 
-INNER JOIN serv_status on booking.stsv_id=serv_status.stsv_id) 
-ORDER BY booking.b_id;";
+$sql = "SELECT orders.o_id,tb_mem.name_mem,serv_status.stsv_name,orders.o_daterq
+FROM((orders INNER JOIN tb_mem on orders.id_mem=tb_mem.id_mem) 
+INNER JOIN serv_status on orders.svst_id=serv_status.stsv_id)
+ORDER BY orders.o_id;";
 $result = mysqli_query($con, $sql);
 
 
@@ -66,18 +66,15 @@ $result = mysqli_query($con, $sql);
                                                 <th scope="col" class="sort" data-sort="name">ชื่อลูกค้า</th>
                                                 <th scope="col" class="sort" data-sort="date">วันที่จอง</th>
                                                 <th scope="col" class="sort" data-sort="status">สถานะ</th>
-
-
-
-
+                                                <th scope="col" class="sort" data-sort="status">การยืนยัน</th>
                                                 <th scope="col" class="text-right">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody class="list">
                                             <?php
                                             while ($rs = mysqli_fetch_array($result)) {
-                                                $b_id = $rs['b_id'];
-                                                $b_date = $rs['b_date'];
+                                                $o_id = $rs['o_id'];
+                                                $o_daterq = $rs['o_daterq'];
                                                 $stsv_name = $rs['stsv_name'];
                                                 $name_mem = $rs['name_mem'];
 
@@ -90,7 +87,7 @@ $result = mysqli_query($con, $sql);
                                                 <th scope="row">
                                                     <div class="media align-items-center">
                                                         <div class="media-body">
-                                                            <span class="name mb-0 text-sm"><?php echo $b_id ?></span>
+                                                            <span class="name mb-0 text-sm"><?php echo $o_id ?></span>
                                                         </div>
                                                     </div>
                                                 </th>
@@ -98,23 +95,33 @@ $result = mysqli_query($con, $sql);
                                                     <?php echo $name_mem ?>
                                                 </td>
                                                 <td class="budget">
-                                                    <?php echo $b_date ?>
+                                                    <?php echo $o_daterq ?>
                                                 </td>
-                                               
+
                                                 <td class="budget">
                                                     <?php echo $stsv_name ?>
                                                 </td>
+                                                <td class="budget">
+                                                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                                            <li class="breadcrumb-item"><a href="#">นัดหมาย</a></li>
+                                                        </ol>
+                                                    </nav>
+                                                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                                            <li class="breadcrumb-item"><a href="#">ยกเลิก</a></li>
+                                                        </ol>
+                                                    </nav>
 
-
+                                                </td>
                                                 <td class="text-right">
                                                     <div class="dropdown">
                                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <i class="fas fa-ellipsis-v"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                                            <a class="dropdown-item" href="Order_updatef.php?b_id=<?= $b_id ?>">อัพเดทข้อมูล</a>
-                                                            <a class="dropdown-item" href="Order_delete.php?b_id=<?= $b_id ?>" role="button " onclick=" return confirm('Are you sure want to delete?');">ลบ</a>
+                                                            <a class="dropdown-item" href="Order_updatef.php?o_id=<?= $o_id ?>">อัพเดทข้อมูล</a>
+                                                            <a class="dropdown-item" href="Order_delete.php?o_id=<?= $o_id ?>" role="button " onclick=" return confirm('Are you sure want to delete?');">ลบ</a>
                                                         </div>
                                                     </div>
                                                 </td>

@@ -6,8 +6,8 @@ session_start();
 // echo '<pre>';
 // print_r($_SESSION);
 // echo '<pre>'; 
-$b_id = $_GET['b_id'];
-// echo $b_id;
+$o_id = $_GET['o_id'];
+// echo $o_id;
 $id_mem = $_SESSION['id_mem'];
 $username = $_SESSION['username'];
 $userlevel = $_SESSION['userlevel'];
@@ -25,11 +25,12 @@ if ($userlevel != 'พนักงาน' and $userlevel != 'สมาชิก'
 
 session_write_close();
 
-$sql = "SELECT booking.*,tb_mem.*,services.*,datacar.car_brand 
-FROM(((booking INNER JOIN tb_mem on booking.id_mem=tb_mem.id_mem) 
-INNER JOIN services on booking.sv_id=services.sv_id ) 
-INNER JOIN datacar on booking.car_id=datacar.car_id) 
-WHERE booking.b_id=$b_id;";
+$sql = "SELECT orders.*,tb_mem.*,services.*,datacar.car_brand 
+FROM(((orders INNER JOIN tb_mem on orders.id_mem=tb_mem.id_mem) 
+INNER JOIN services on orders.sv_id=services.sv_id ) 
+INNER JOIN datacar on orders.car_id=datacar.car_id) 
+WHERE orders.o_id=$o_id;";
+
 $rs = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($rs);
 
@@ -37,14 +38,14 @@ $row = mysqli_fetch_array($rs);
 $id_mem = $_SESSION['id_mem'];
 $tel_mem = $_SESSION['tel_mem'];
 
-$b_mail = $row['b_mail'];
-$car_num = $row['car_num'];
+$o_mail = $row['o_mail'];
+$number_car = $row['number_car'];
 $sv_id = $row['sv_id'];
-$b_dateaction = $row['b_dateaction'];
+$o_date = $row['o_date'];
 $year_car = $row['year_car'];
 $mile = $row['mile'];
-$b_date = $row['b_date'];
-$b_time = $row['b_time'];
+$o_daterq = $row['o_daterq'];
+$o_timerq = $row['o_timerq'];
 $car_brand = $row['car_brand'];
 $sv_name = $row['sv_name'];
 
@@ -91,7 +92,7 @@ $sv_name = $row['sv_name'];
     <script src="js/modernizr-2.6.2.min.js"></script>
 
 
-    <title>Car Booking Form</title>
+    <title>Car orders Form</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -383,7 +384,7 @@ $sv_name = $row['sv_name'];
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <h2>ยืนยันข้อมูลการจอง<br>
-                                                    <span class="small">order <?php echo $b_id ?></span>
+                                                    <span class="small">order <?php echo $o_id ?></span>
                                                 </h2>
                                             </div>
                                         </div>
@@ -395,14 +396,14 @@ $sv_name = $row['sv_name'];
                                                 <strong>ข้อมูลลูกค้า</strong><br>
                                                 ชื่อ-สกุล : <?php echo $name_mem ?> <?php echo $last_mem ?><br>
                                                 เบอร์โทร : <?php echo $tel_mem ?><br>
-                                                E-mail : <?php echo $b_mail ?><br>
+                                                E-mail : <?php echo $o_mail ?><br>
                                             </address>
                                         </div>
                                         <div class="col-xs-6 text-right">
                                             <address>
                                                 <strong>ข้อมูลรถ</strong><br>
                                                 ยี่ห้อรถ : <?php echo $car_brand ?><br>
-                                                ทะเบียน : <?php echo $car_num ?><br>
+                                                ทะเบียน : <?php echo $number_car ?><br>
                                                 งานที่จะเข้าใช้บริการ : <?php echo $sv_name ?><br>
                                             </address>
                                         </div>
@@ -411,16 +412,16 @@ $sv_name = $row['sv_name'];
                                         <div class="col-xs-6">
                                             <address>
                                                 <strong>วันที่ทำรายการ</strong><br>
-                                                <?php echo $b_dateaction ?>
+                                                <?php echo $o_date ?>
                                             </address>
                                         </div>
                                         <div class="col-xs-6 text-right">
                                             <address>
                                                 <strong>วันนัดเข้าใช้บริการ : </strong>
-                                                <?php echo $b_date ?><br>
+                                                <?php echo $o_daterq ?><br>
 
                                                 <strong>เวลา : </strong>
-                                                <?php echo $b_time ?><br>
+                                                <?php echo $o_timerq ?><br>
                                             </address>
                                         </div>
                                     </div>

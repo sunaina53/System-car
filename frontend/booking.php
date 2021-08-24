@@ -360,7 +360,7 @@ session_write_close();
                         </div>
                         <div class="item">
                             <p>Email</p>
-                            <input type="text" name="b_mail" />
+                            <input type="text" name="o_mail" />
                         </div>
                         <div class="item">
                             <p>เบอร์โทร</p>
@@ -368,7 +368,7 @@ session_write_close();
                         </div>
                         <div class="item">
                             <p>ทะเบียน</p>
-                            <input type="text" class="form-control form-control-rounded" id="input-7" placeholder="เลขทะเบียน" name="car_num">
+                            <input type="text" class="form-control form-control-rounded" id="input-7" placeholder="เลขทะเบียน" name="number_car">
                         </div>
                         <div class="form-group">
                             <p>ข้อมูลรถ</p>
@@ -397,7 +397,7 @@ session_write_close();
                                     <?php
                                     $sql = "select * from services";
                                     $result = mysqli_query($con, $sql);
-                                    echo "<select name= 'sv_name' class = 'form-control'>";
+                                    echo "<select name= 'sv_id' class = 'form-control'>";
 
                                     while ($rs = mysqli_fetch_array($result)) {
                                         $sv_id = $rs['sv_id'];
@@ -415,19 +415,19 @@ session_write_close();
                                 </div>
                                 <div class="form-group">
                                     <label for="input-8">ระยะไมล์</label>
-                                    <input type="text" class="form-control form-control-rounded" id="input-8" placeholder="" name="mile_car">
+                                    <input type="text" class="form-control form-control-rounded" id="input-8" placeholder="" name="mile">
                                 </div>
-                                <div class="wpb_wrapper">
-                                    <div class="cost-calculator-box clearfix"><label>วันจองคิว</label>
-                                        <input type="date" name="b_date" value="วันจองคิว" min="<?php echo date('Y-m-d'); ?>">
+                                <div class="form-group">
+                                        <label for="input-9">วันจองคิว</label>
+                                        <input type="date"class="form-control form-control-rounded" name="o_daterq" value="วันจองคิว" min="<?php echo date('dd-mm-yy');?>">
 
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cost-calculator-box clearfix page-margin-top">
+                            <div class="form-group">
                                 <label>เวลาที่นัดหมาย</label>
-                                <input type="time" name="order_timerq" required class="form-control" min="<?php echo 'timezone_location_get'; ?>">
+                                <input type="time" class="form-control form-control-rounded" name="o_timerq" required class="form-control" min="<?php echo 'timezone_location_get'; ?>">
 
 
                             </div>

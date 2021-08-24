@@ -1,16 +1,16 @@
 <?php
 include "../conn.php";
 
-$b_id = $_GET['b_id'];
+$o_id = $_GET['o_id'];
 
 
 
 
-$sql = "SELECT booking.*,tb_mem.*,services.*,datacar.car_brand 
-FROM(((booking INNER JOIN tb_mem on booking.id_mem=tb_mem.id_mem) 
-INNER JOIN services on booking.sv_id=services.sv_id ) 
-INNER JOIN datacar on booking.car_id=datacar.car_id) 
-WHERE booking.b_id=$b_id;";
+$sql = "SELECT orders.*,tb_mem.*,services.*,datacar.car_brand 
+FROM(((orders INNER JOIN tb_mem on orders.id_mem=tb_mem.id_mem) 
+INNER JOIN services on orders.sv_id=services.sv_id ) 
+INNER JOIN datacar on orders.car_id=datacar.car_id) 
+WHERE orders.o_id=$o_id;";
 $rs = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($rs);
 
@@ -18,14 +18,14 @@ $id_mem = $row['id_mem'];
 $tel_mem = $row['tel_mem'];
 $name_mem = $row['name_mem'];
 $last_mem = $row['last_mem'];
-$b_mail = $row['b_mail'];
-$car_num = $row['car_num'];
+$o_mail = $row['o_mail'];
+$number_car = $row['number_car'];
 $sv_id = $row['sv_id'];
-$b_dateaction = $row['b_dateaction'];
+$o_date = $row['o_date'];
 $year_car = $row['year_car'];
 $mile = $row['mile'];
-$b_date = $row['b_date'];
-$b_time = $row['b_time'];
+$o_daterq = $row['o_daterq'];
+$o_timerq = $row['o_timerq'];
 $car_brand = $row['car_brand'];
 $sv_name = $row['sv_name'];
 
@@ -279,7 +279,6 @@ $sv_name = $row['sv_name'];
             width: calc(50% - 8px);
         }
     }
-
 </style>
 
 
@@ -310,15 +309,17 @@ $sv_name = $row['sv_name'];
                                     <div class="invoice-title">
                                     </div>
                                     <br>
-                                    <div class="row m-0">
+                                  
                                         <div class="col-xs-12">
                                             <h2>ข้อมูลการจอง<br>
-                                                <span class="small">order <?php echo $b_id ?></span>
+                                                <span class="small">order <?php echo $o_id ?></span>
                                             </h2>
                                         </div>
-                                        <p class="mt--1"><a class="btn btn-primary btn-learn" href="spare.php"> <i class="icon-play4"></i> เพิ่มอะไหล่</a> </p>
-                                    </div>
                                 </div>
+                                <div class="col-xs-6 text-right">
+                                            <a class="btn btn-primary btn-learn" href="spare.php"> <i class="icon-play4"></i> เพิ่มอะไหล่</a>
+                                            </h2>
+                                        </div>
                                 <hr>
                                 <div class="row m-0" style="justify-content: space-between;" sta472>
                                     <div class="col-xs-12">
@@ -326,14 +327,14 @@ $sv_name = $row['sv_name'];
                                             <strong>ข้อมูลลูกค้า</strong><br>
                                             ชื่อ-สกุล : <?php echo $name_mem ?> <?php echo $last_mem ?><br>
                                             เบอร์โทร : <?php echo $tel_mem ?><br>
-                                            E-mail : <?php echo $b_mail ?><br>
+                                            E-mail : <?php echo $o_mail ?><br>
                                         </address>
                                     </div>
                                     <div class="col-xs-6 text-right">
                                         <address>
                                             <strong>ข้อมูลรถ</strong><br>
                                             ยี่ห้อรถ : <?php echo $car_brand ?><br>
-                                            ทะเบียน : <?php echo $car_num ?><br>
+                                            ทะเบียน : <?php echo $number_car ?><br>
                                             งานที่จะเข้าใช้บริการ : <?php echo $sv_name ?><br>
                                         </address>
                                     </div>
@@ -342,23 +343,23 @@ $sv_name = $row['sv_name'];
                                     <div class="col-xs-6">
                                         <address>
                                             <strong>วันที่ทำรายการ</strong><br>
-                                            <?php echo $b_dateaction ?>
+                                            <?php echo $o_date ?>
                                         </address>
                                     </div>
                                     <div class="col-xs-6 text-right">
                                         <address>
                                             <strong>วันนัดเข้าใช้บริการ : </strong>
-                                            <?php echo $b_date ?><br>
+                                            <?php echo $o_daterq ?><br>
 
                                             <strong>เวลา : </strong>
-                                            <?php echo $b_time ?><br>
+                                            <?php echo $o_timerq ?><br>
                                         </address>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3>อะไหล่</h3>
-                                         <table class="table table-striped"> 
+                                        <table class="table table-striped">
                                             <thead>
                                                 <tr class="line">
                                                     <td><strong>ID</strong></td>
@@ -368,64 +369,40 @@ $sv_name = $row['sv_name'];
                                                     <td class="text-right"><strong>ราคา</strong></td>
                                                 </tr>
                                             </thead>
-                                            <!-- <tbody> 
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><strong>Template Design</strong><br>can modsetup a website.</td>
-                                                    <td class="text-center">15</td>
-                                                    <td class="text-center">$75</td>
-                                                    <td class="text-right">$1,125.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><strong>Template Development</strong><br>fprivate network).</td>
-                                                    <td class="text-center">15</td>
-                                                    <td class="text-center">$75</td>
-                                                    <td class="text-right">$1,125.00</td>
-                                                </tr>
-                                                <tr class="line">
-                                                    <td>3</td>
-                                                    <td><strong>Testing</strong><br>Take m performanactice.</td>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">$75</td>
-                                                    <td class="text-right">$150.00</td>
-                                                </tr> -->
-
-                                                
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td class="text-right"><strong>ค่าอะไหล่รวม</strong></td>
-                                                    <td class="text-right"><strong>บาท</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">
-                                                    </td>
-                                                    <td class="text-right"><strong>ค่ามัดจำ</strong></td>
-                                                    <td class="text-right"><strong>บาท</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td class="text-right"><strong>ค่าแรง</strong></td>
-                                                    <td class="text-right"><strong>บาท</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td class="text-right"><strong>ราคารวม</strong></td>
-                                                    <td class="text-right"><strong>บาท</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td class="text-right"><strong>มัดจำ</strong></td>
-                                                    <td class="text-right"><strong>บาท</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td class="text-right"><strong>ยอดคงเหลือ</strong></td>
-                                                    <td class="text-right"><strong>บาท</strong></td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td class="text-right"><strong>ค่าอะไหล่รวม</strong></td>
+                                                <td class="text-right"><strong>บาท</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                </td>
+                                                <td class="text-right"><strong>ค่ามัดจำ</strong></td>
+                                                <td class="text-right"><strong>บาท</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td class="text-right"><strong>ค่าแรง</strong></td>
+                                                <td class="text-right"><strong>บาท</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td class="text-right"><strong>ราคารวม</strong></td>
+                                                <td class="text-right"><strong>บาท</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td class="text-right"><strong>มัดจำ</strong></td>
+                                                <td class="text-right"><strong>บาท</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td class="text-right"><strong>ยอดคงเหลือ</strong></td>
+                                                <td class="text-right"><strong>บาท</strong></td>
+                                            </tr>
                                             </tbody>
-                                        </table>  
-                                    </div> 
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <!-- END INVOICE -->
@@ -433,38 +410,37 @@ $sv_name = $row['sv_name'];
                     </div>
 
 
-                    
 
-              <div class="col">
-              <form method="post" action="update_order.php?b_id=<?=$b_id?>" enctype=multipart/form-data>       
-              <div class="form-group">
-                  <label for="stsv_id">สถานะคำสั่งซื้อ</label>
-                  <?php 
-                  
-                  $sql3 = "select * from serv_status";
-                  $result3 = mysqli_query($con,$sql3);
-                  echo "<select name= 'stsv_id' class = 'form-control'>";
 
-                  while($rs3=mysqli_fetch_array($result3)){
-                    $stsv_id=$rs3['stsv_id'];
-                    $stsv_name=$rs3['stsv_name'];
-            
-                    if($stsv_id==$stsv_id){
-                
-                        echo "<option value='$stsv_id' selected>$stsv_name</option>";
-                    }else{
-                         echo "<option value ='$stsv_id'>$stsv_name</option>";
-                    }
+                    <!-- <div class="col">
+                        <form method="post" action="update_order.php?o_id=<?= $o_id ?>" enctype=multipart/form-data>
+                            <div class="form-group">
+                                <label for="stsv_id">สถานะคำสั่งซื้อ</label>
+                                <?php
 
-                  }
-                  echo "</select>";
-                  
-                  ?>
-                </div>
-                                    <button type="submit" class="btn btn-dark">Submit</button>
-                                    <button type="reset" class="btn btn-danger">Reset</button>
-                  </form>
-                                            </div>
+                                // $sql3 = "select * from serv_status";
+                                // $result3 = mysqli_query($con, $sql3);
+                                // echo "<select name= 'stsv_id' class = 'form-control'>";
+
+                                // while ($rs3 = mysqli_fetch_array($result3)) {
+                                //     $stsv_id = $rs3['stsv_id'];
+                                //     $stsv_name = $rs3['stsv_name'];
+
+                                //     if ($stsv_id == $stsv_id) {
+
+                                //         echo "<option value='$stsv_id' selected>$stsv_name</option>";
+                                //     } else {
+                                //         echo "<option value ='$stsv_id'>$stsv_name</option>";
+                                //     }
+                                // }
+                                // echo "</select>";
+
+                                ?>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </form>
+                    </div> -->
 
 </body>
 

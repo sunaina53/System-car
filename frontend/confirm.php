@@ -1,12 +1,12 @@
 <?php 
 include "../conn.php";
 session_start();
-$last_id = "SELECT MAX(b_id) AS b_id FROM booking"; // query อ่านค่า id สูงสุด
+$last_id = "SELECT MAX(o_id) AS o_id FROM orders"; // query อ่านค่า id สูงสุด
 $result = mysqli_query($con,$last_id);
 $rs = mysqli_fetch_array($result);
 
-$b_id = $rs['b_id']; // คืนค่า id ที่ insert สูงสุด
-// echo $b_id;
+$o_id = $rs['o_id']; // คืนค่า id ที่ insert สูงสุด
+
 ?>
 
 <!DOCTYPE HTML>
@@ -124,7 +124,7 @@ $b_id = $rs['b_id']; // คืนค่า id ที่ insert สูงสุ�
             </aside>
             
 			<div style="text-align:center; margin-top:20px;">
-			<form name="formbooking" action="recipes.php?b_id=<?=$b_id?>" method="POST">
+			<form name="formbooking" action="recipes.php?o_id=<?=$o_id?>" method="POST">
         <h1>การจองสำเร็จ</h1>
 		<button href="recipes.php">ไปที่หน้าการประเมินราคา</button>
 </form>

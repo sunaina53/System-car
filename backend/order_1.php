@@ -1,21 +1,14 @@
 <?php
 include "../conn.php";
-
 $sql = "SELECT booking.b_id,tb_mem.name_mem,serv_status.*,booking.b_date
 FROM((booking INNER JOIN tb_mem on booking.id_mem=tb_mem.id_mem) 
 INNER JOIN serv_status on booking.stsv_id=serv_status.stsv_id)
 WHERE serv_status.stsv_id=1
 ORDER BY booking.b_id;";
 $result = mysqli_query($con, $sql);
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -67,10 +60,6 @@ $result = mysqli_query($con, $sql);
                                                 <th scope="col" class="sort" data-sort="name">ชื่อลูกค้า</th>
                                                 <th scope="col" class="sort" data-sort="date">วันที่จอง</th>
                                                 <th scope="col" class="sort" data-sort="status">สถานะ</th>
-
-
-
-
                                                 <th scope="col" class="text-right">Action</th>
                                             </tr>
                                         </thead>
@@ -81,9 +70,7 @@ $result = mysqli_query($con, $sql);
                                                 $b_date = $rs['b_date'];
                                                 $stsv_name = $rs['stsv_name'];
                                                 $name_mem = $rs['name_mem'];
-
                                             ?>
-
                                                 </thead>
                                         <tbody class="list">
 
@@ -101,19 +88,15 @@ $result = mysqli_query($con, $sql);
                                                 <td class="budget">
                                                     <?php echo $b_date ?>
                                                 </td>
-                                               
                                                 <td class="budget">
                                                     <?php echo $stsv_name ?>
                                                 </td>
-
-
                                                 <td class="text-right">
                                                     <div class="dropdown">
                                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <i class="fas fa-ellipsis-v"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
                                                             <a class="dropdown-item" href="Order_updatef.php?b_id=<?= $b_id ?>">อัพเดทข้อมูล</a>
                                                             <a class="dropdown-item" href="Order_delete.php?b_id=<?= $b_id ?>" role="button " onclick=" return confirm('Are you sure want to delete?');">ลบ</a>
                                                         </div>
@@ -169,5 +152,4 @@ $result = mysqli_query($con, $sql);
             <!-- Argon JS -->
             <script src="./assets/js/argon.js?v=1.2.0"></script>
 </body>
-
 </html>
