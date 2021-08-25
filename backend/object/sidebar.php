@@ -25,8 +25,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
+              <a class="nav-link" href="spare.php">
+                <i class="ni ni-spaceship text-primary"></i>
                 <span class="nav-link-text">อะไหล่</span>
               </a>
             </li>
@@ -61,13 +61,13 @@
               </a>
             </li>
           </ul>
-          <!-- Divider -->
+          <!-- Divider
           <hr class="my-3">
-          <!-- Heading -->
+          Heading
           <h6 class="navbar-heading p-0 text-muted">
             <span class="docs-normal">Documentation</span>
           </h6>
-          <!-- Navigation -->
+          Navigation
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
               <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
@@ -99,7 +99,7 @@
                 <span class="nav-link-text">Upgrade to PRO</span>
               </a>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

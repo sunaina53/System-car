@@ -317,7 +317,7 @@ $sv_name = $row['sv_name'];
                                         </div>
                                 </div>
                                 <div class="col-xs-6 text-right">
-                                            <a class="btn btn-primary btn-learn" href="spare.php"> <i class="icon-play4"></i> เพิ่มอะไหล่</a>
+                                            <a class="btn btn-primary btn-learn" href="spare.php?o_id=<?=$o_id?>"> <i class="icon-play4"></i> เพิ่มอะไหล่</a>
                                             </h2>
                                         </div>
                                 <hr>
