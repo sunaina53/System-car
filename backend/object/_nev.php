@@ -1,3 +1,26 @@
+<?php 
+  // // include "connect.php";
+  // session_start();
+ 
+  //   //ตัวแปรจาก session
+  //   $id_mem = $_SESSION['id_mem'];
+  //   $name_mem = $_SESSION['name_mem'];
+  //   $userlevel = $_SESSION['userlevel'];
+
+  //   $sql2 ="SELECT * FROM tb_mem WHERE id_mem =$id_mem";
+  //   $result2 = mysqli_query($con,$sql2) ;
+  //   $rs2 = mysqli_fetch_array($result2);
+  //   extract($rs2);
+
+  //   $em_img = $rs2['em_img'];
+  //   $name_mem = $rs2['name_mem'];
+
+  //   // เงื่อนไขตรวจสอบ
+  //   if($userlevel!='สมาชิก'and $userlevel!='แอดมิน'){
+  //     header ("location: logout.php");
+  //   }
+    
+  ?>
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
@@ -236,3 +259,6 @@
       </div>
     </nav>
     <!-- Header -->
+    <?php
+  session_write_close();
+?>

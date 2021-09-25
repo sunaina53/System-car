@@ -123,7 +123,9 @@ include "object/listdataspare.php";
                                         <tr>
                                             <td></td>
                                             <td colspan="4" align="right">
-                                                <input type="button" name="Submit2" value="สั่งอะไหล่" onclick="window.location='saveorder.php';" />
+                                                <!-- <input type="button" name="Submit2" value="สั่งอะไหล่" onclick="window.location='saveorder.php';" /> -->
+                                               <input type="button" name="Submit2" value="ดำเนินการต่อ" onclick="window.location='formconfirm.php';" />
+
                                             </td>
                                         </tr>
                                 </table>

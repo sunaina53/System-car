@@ -109,7 +109,8 @@ $result = mysqli_query($con, $sql);
                                                 </td>
                                                 <td class="text-center">
                                                     <?php
-                                                    echo "<a class='btn btn-success' href='cart.php?sp_id=$rs[sp_id]&act=add&act=add'>เพิ่มในตะกร้าสินค้า <br></a>";
+                                                    echo "<a class='btn btn-success' href='cart.php?sp_id=$rs[sp_id]&act=add&act=add'>เพิ่มลงบิล <br></a>";
+                                                    echo "<a class='btn btn-primary' href='cart.php?sp_id=$rs[sp_id]&act=add&act=add'>จัดสต๊อก <br></a>";
                                                     ?>
                                             </tr>
                                         <?php }

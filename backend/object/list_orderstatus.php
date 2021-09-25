@@ -4,7 +4,7 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="">
-              <h6 class="h2 text-white d-inline-block mb-0">การจองทั้งหมด</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">สถานะการบริการ</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="All_order.php"><i class="fas fa-home"></i></a></li>
@@ -12,7 +12,7 @@
               </nav>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="order_1.php">รอการประเมิน</a></li>
+                  <li class="breadcrumb-item"><a href="order_1.php">รอตรวจสอบ</a></li>
                 </ol>
               </nav>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
@@ -22,17 +22,12 @@
               </nav>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="order_3.php">ตรวจสอบการชำระเงิน</a></li>
+                  <li class="breadcrumb-item"><a href="order_3.php">ยกเลิก</a></li>
                 </ol>
               </nav>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="order_4.php">ยืนยันการจอง</a></li>
+                  <li class="breadcrumb-item"><a href="order_4.php">ไม่มาตามนัด</a></li>
                 </ol>
               </nav>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="order_5.php">เสร็จสิ้น</a></li>
-                </ol>
-              </nav>
-
+             

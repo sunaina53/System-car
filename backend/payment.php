@@ -4,7 +4,7 @@ include "../conn.php";
 $sql = "SELECT orders.o_id,tb_mem.name_mem,serv_status.stsv_name,orders.o_daterq,orders.o_timerq
 FROM((orders INNER JOIN tb_mem on orders.id_mem=tb_mem.id_mem) 
 INNER JOIN serv_status on orders.svst_id=serv_status.stsv_id)
-WHERE serv_status.stsv_id=4
+WHERE serv_status.stsv_id=2
 ORDER BY orders.o_id;";
 $result = mysqli_query($con, $sql);
 
@@ -37,7 +37,7 @@ $result = mysqli_query($con, $sql);
     <?php
     include "object/sidebar.php";
     include "object/_nev.php";
-    include "object/list_orderstatus.php";
+    include "object/list_payment.php";
     ?>
     </div>
     <div class="text-right">
@@ -57,7 +57,7 @@ $result = mysqli_query($con, $sql);
                         <div class="col">
                             <div class="card bg-default shadow">
                                 <div class="card-header bg-transparent border-0">
-                                    <h3 class="text-white mb-0">ข้อมูลการนัดหมาย</h3>
+                                    <h3 class="text-white mb-0">ข้อมูลออเดอร์ที่ดำเนินการซ่อมแล้ว</h3>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table align-items-center table-dark table-flush">
@@ -65,18 +65,17 @@ $result = mysqli_query($con, $sql);
                                             <tr>
                                                 <th scope="col" class="sort" data-sort="ID">ID</th>
                                                 <th scope="col" class="sort" data-sort="name">ชื่อลูกค้า</th>
-                                                <th scope="col" class="sort" data-sort="date">วันที่จอง</th>
-                                                <th scope="col" class="sort" data-sort="date">เวลาจอง</th>
+                                                <!-- <th scope="col" class="sort" data-sort="date">วันที่จอง</th>
+                                                <th scope="col" class="sort" data-sort="date">เวลาจอง</th> -->
                                                 <th scope="col" class="sort" data-sort="status">สถานะ</th>
-                                                <th scope="col" class="text-right">แก้ไขสถานะ</th>
+                                                <th scope="col" class="text-right">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody class="list">
                                             <?php
                                             while ($rs = mysqli_fetch_array($result)) {
                                                 $o_id = $rs['o_id'];
-                                                $o_daterq = $rs['o_daterq'];
-                                                $o_timerq = $rs['o_timerq'];
+
                                                 $stsv_name = $rs['stsv_name'];
                                                 $name_mem = $rs['name_mem'];
 
@@ -96,73 +95,13 @@ $result = mysqli_query($con, $sql);
                                                 <td class="budget">
                                                     <?php echo $name_mem ?>
                                                 </td>
-                                                <td class="budget">
-                                                    <?php echo $o_daterq ?>
-                                                </td>
-                                                <td class="budget">
-                                                    <?php echo $o_timerq ?>
-                                                </td>
+
 
                                                 <td class="budget">
                                                     <?php echo $stsv_name ?>
                                                 </td>
-
                                                 <td class="text-right">
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                                            <i class="ni ni-active-40"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0">
-                                                            <!-- Dropdown header -->
-                                                            <div class="px-3 py-3">
-                                                                <h6 class="text-sm text-muted m-0"> <strong class="text-primary">แก้ไขสถานะ</strong></h6>
-                                                            </div>
-                                                            <!-- List group -->
-                                                            <div class="list-group ">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col">
-                                                                        <form method="post" action="AC_update_o.php?o_id=<?=$o_id?>" enctype=multipart/form-data>
-                                                                            <input type="hidden" name="sp_id" value="<?= $sp_id ?>">
-                                                                            <div class="form-group mb-5">
-                                                                                <div class="input-group input-group-merge input-group-alternative">
-                                                                                    <span class="input-group-text"><i class="fa fa-tag"></i></span>
-                                                                                    <?php
-                                                                                    include "../conn.php";
-                                                                                    $sql2 = "select * from serv_status";
-                                                                                    $result2 = mysqli_query($con, $sql2);
-                                                                                    echo "<select name= 'stsv_id' class = 'form-control'>";
-
-                                                                                    while ($rs2 = mysqli_fetch_array($result2)) {
-                                                                                        $stsv2 = $rs2['stsv_id'];
-                                                                                        $stsv_name2 = $rs2['stsv_name'];
-
-                                                                                        if ($stsv2 == $stsv) {
-                                                                                            echo "<option value='$stsv2' selected>$stsv_name2</option>";
-                                                                                        } else {
-                                                                                            echo "<option value ='$stsv2' class='form-control'>$stsv_name2</option>";
-                                                                                        }
-                                                                                    }
-                                                                           
-                                                                                    echo "</select>";
-
-                                                                                    ?>
-                                                                                </div>
-                                                                            </div>
-                                                                    </div>
-                                                                    <div class="text-center">
-                                                                        <button type="submit" class="btn btn-primary my-4">Update</button>
-                                                                    </div>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="col ml--2">
-                                                                    <div class="d-flex justify-content-between align-items-center">
-
-                                                                    </div>
-                                                                    </a>
-                                                    </li>
-
-                                                    <!-- <a class="dropdown-item" href="Order_updatef.php?o_id=<?= $o_id ?>">อัพเดทข้อมูล</a>
-                                                            <a class="dropdown-item" href="Order_delete.php?o_id=<?= $o_id ?>" role="button " onclick=" return confirm('Are you sure want to delete?');">ลบ</a> -->
+                                                    <a class="btn btn-primary" href="spare.php?o_id=<?=$o_id ?>">สร้างใบประเมินราคา</a>
 
                                                 </td>
                                             </tr>

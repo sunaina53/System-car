@@ -25,9 +25,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="spare.php">
+              <a class="nav-link" href="payment.php">
                 <i class="ni ni-spaceship text-primary"></i>
-                <span class="nav-link-text">อะไหล่</span>
+                <span class="nav-link-text">ชำระเงิน</span>
               </a>
             </li>
             <li class="nav-item">
