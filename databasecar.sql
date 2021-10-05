@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2021 at 04:43 PM
+-- Generation Time: Oct 05, 2021 at 02:07 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -64,7 +64,8 @@ INSERT INTO `booking` (`b_id`, `id_mem`, `b_mail`, `tel_mem`, `car_num`, `car_id
 (35, 8, '', 'qqq', '', 2, 3, 2, 2559, 0, '2021-12-08', '05:40', '2021-08-03'),
 (36, 11, 'admin@mail.com', '1234567890', '1กม 7118', 2, 4, 1, 2558, 19800, '0000-00-00', '03:09', '2021-08-06'),
 (37, 11, 'tatasunainatata@gmail.com', '1234567890', '1กม 7118', 1, 3, 1, 2559, 20000, '3333-03-20', '02:12', '2021-08-06'),
-(38, 11, '', '1234567890', '', 1, 1, 1, 0, 0, '0000-00-00', '20:35', '2021-08-16');
+(38, 11, '', '1234567890', '', 1, 1, 1, 0, 0, '0000-00-00', '20:35', '2021-08-16'),
+(39, 12, 'alaaa@use.com', '0587457896', '8045', 2, 1, 1, 0, 10548, '2564-12-22', '14:23', '2021-08-24');
 
 -- --------------------------------------------------------
 
@@ -92,19 +93,19 @@ INSERT INTO `car_type` (`ctype_id`, `ctype_name`) VALUES
 --
 
 CREATE TABLE `customer` (
-  `id_mem` int(11) NOT NULL,
-  `name_mem` varchar(50) NOT NULL,
-  `address_mem` text NOT NULL,
-  `tel_mem` int(10) NOT NULL,
-  `userlevel` varchar(12) NOT NULL,
-  `password` varchar(12) NOT NULL
+  `cus_id` int(11) NOT NULL,
+  `cus_name` varchar(50) NOT NULL,
+  `cus_address` text NOT NULL,
+  `cus_tel` int(10) NOT NULL,
+  `cus_user` varchar(12) NOT NULL,
+  `cus_pass` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id_mem`, `name_mem`, `address_mem`, `tel_mem`, `userlevel`, `password`) VALUES
+INSERT INTO `customer` (`cus_id`, `cus_name`, `cus_address`, `cus_tel`, `cus_user`, `cus_pass`) VALUES
 (2, 'bbbb', 'BBBB', 222222, 'bbbbbb', 'bbbbb'),
 (4, 'qqqq', 'qqqq', 956444, 'qqqq', '3bad6af0fa4b');
 
@@ -150,8 +151,8 @@ CREATE TABLE `dataspare` (
 --
 
 INSERT INTO `dataspare` (`sp_id`, `sp_name`, `sp_price`, `sp_point`, `sp_unit`, `sptype_id`, `sp_balance`) VALUES
-(1, 'หม้อน้ำ', 8500, 5, 'หม้อน้ำ', 1, 25),
-(2, 'แบตเตอรี่', 1500, 2, 'ก้อน', 2, 10);
+(1, 'หม้อน้ำ', 8500, 5, 'หม้อน้ำ', 1, -8),
+(2, 'แบตเตอรี่', 1500, 2, 'ก้อน', 1, 36);
 
 -- --------------------------------------------------------
 
@@ -174,8 +175,63 @@ CREATE TABLE `emp` (
 --
 
 INSERT INTO `emp` (`em_id`, `em_name`, `em_address`, `em_tel`, `em_position`, `em_user`, `em_pass`) VALUES
-(3, 'ssss', 'ssss', 5444, 'ssss', 'ssss', '8f60c8102d29fcd525162d02eed4566b'),
-(4, 'hhhh', 'hhh 3232', 3232323, 'hhhh', 'hhhh', 'e61e7de603852182385da5e907b4b232');
+(4, 'แอดมิน', 'hhh 3232', 3232323, 'admin', 'hhhh', 'c978693c0994a3455b946a345fb0337b');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `o_id` int(11) NOT NULL,
+  `id_mem` int(11) NOT NULL,
+  `o_mail` varchar(60) NOT NULL,
+  `tel_mem` varchar(10) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  `year_car` int(5) NOT NULL,
+  `number_car` varchar(8) NOT NULL COMMENT 'ทะเบียนรถ',
+  `mile` varchar(10) NOT NULL COMMENT 'ระยะไมล์',
+  `sv_id` int(11) NOT NULL COMMENT 'ประเภทงานบริการ',
+  `svst_id` int(11) NOT NULL COMMENT 'สถานะบริการ',
+  `o_date` datetime(6) NOT NULL,
+  `o_daterq` varchar(30) NOT NULL,
+  `o_timerq` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`o_id`, `id_mem`, `o_mail`, `tel_mem`, `car_id`, `year_car`, `number_car`, `mile`, `sv_id`, `svst_id`, `o_date`, `o_daterq`, `o_timerq`) VALUES
+(7, 12, 'KK@GMAIL.VOM', '0587457896', 2, 2559, 'aaaa', '4444444', 2, 2, '2021-09-25 15:36:22.000000', '1698-08-14', '22:30'),
+(8, 12, 'tatasunainatata@gmail.com', '0587457896', 2, 2558, '44444', '123132', 2, 1, '2021-10-05 13:58:00.000000', '1201-12-02', '06:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_details`
+--
+
+CREATE TABLE `orders_details` (
+  `detail_id` int(11) NOT NULL COMMENT 'ไอดี',
+  `o_id` int(11) NOT NULL COMMENT 'ไอดีออเดอร์',
+  `sp_id` int(11) NOT NULL COMMENT 'ไอดีอะไหล่',
+  `qty` int(3) NOT NULL COMMENT 'จำนวน',
+  `total` int(10) NOT NULL COMMENT 'ยอดรวมราคา',
+  `wage` int(20) NOT NULL,
+  `comment` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders_details`
+--
+
+INSERT INTO `orders_details` (`detail_id`, `o_id`, `sp_id`, `qty`, `total`, `wage`, `comment`) VALUES
+(27, 0, 1, 1, 8500, 2000, ''),
+(28, 7, 1, 2, 17000, 250, ''),
+(29, 7, 2, 1, 1500, 250, ''),
+(30, 7, 1, 1, 8500, 450, '');
 
 -- --------------------------------------------------------
 
@@ -215,11 +271,11 @@ CREATE TABLE `serv_status` (
 --
 
 INSERT INTO `serv_status` (`stsv_id`, `stsv_name`) VALUES
-(1, 'รอการประเมิน'),
-(2, 'กำลังดำเนินการ'),
-(3, 'ตรวจสอบการชำระเงิน'),
-(4, 'ยืนยันการจอง'),
-(5, 'เสร็จสิ้น');
+(1, 'รอตรวจสอบ'),
+(2, 'นัดหมาย'),
+(3, 'ยกเลิก'),
+(4, 'ไม่มาตามนัด'),
+(6, 'ชำระเงินเสร็จสิ้น');
 
 -- --------------------------------------------------------
 
@@ -275,16 +331,13 @@ CREATE TABLE `tb_mem` (
 --
 
 INSERT INTO `tb_mem` (`id_mem`, `name_mem`, `last_mem`, `userlevel`, `username`, `password`, `tel_mem`, `address_mem`) VALUES
-(1, 'aaa', 'aaa', 'aaa', 'aaa', 'aaa', '', ''),
 (2, 'sss', 'sss', '', 'sss', '9f6e6800cfae7749eb6c48661', '555', '555'),
 (3, 'sss', 'sss', 'สมาชิก', 'sss', '9f6e6800cfae7749eb6c48661', '555', '555'),
 (4, 'aaa', 'aaa', 'สมาชิก', 'aaa', '47bce5c74f589f4867dbd57e9', 'aaa', 'aaa'),
-(6, 'jxvljsd', 'lkjfdl', 'สมาชิก', 'user1', '6074c6aa3488f3c2dddff2a7c', '0945587445', ';kldfngkjldhngof'),
-(7, 'dfnbkjd', 'kjhfdjlkgh', 'สมาชิก', 'user2', '6074c6aa3488f3c2dddff2a7ca821aab', '0878754567', 'dopfgjhphpr'),
 (8, 'qqq', 'qqq1', 'สมาชิก', 'qqq', 'b2ca678b4c936f905fb82f2733f5297f', 'qqq', 'qqq'),
-(9, 'นาย', 'กรชิต', 'สมาชิก', 'nine99', 'd3eb9a9233e52948740d7eb8c3062d14', '0970895743', 'ดอนเมือง '),
 (10, 'ssss', 'ssss', 'สมาชิก', 'ssss', '8f60c8102d29fcd525162d02eed4566b', 'ssss', 'ssss'),
-(11, 'ad', 'min', 'สมาชิก', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', '1234567890', '123465487');
+(11, 'ad', 'min', 'แอดมิน', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', '1234567890', '123465487'),
+(12, 'user', 'user', 'สมาชิก', 'user', '81dc9bdb52d04dc20036dbd8313ed055', '0587457896', '48/32 mootaaa');
 
 --
 -- Indexes for dumped tables
@@ -312,7 +365,7 @@ ALTER TABLE `car_type`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id_mem`);
+  ADD PRIMARY KEY (`cus_id`);
 
 --
 -- Indexes for table `datacar`
@@ -331,6 +384,18 @@ ALTER TABLE `dataspare`
 --
 ALTER TABLE `emp`
   ADD PRIMARY KEY (`em_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`o_id`);
+
+--
+-- Indexes for table `orders_details`
+--
+ALTER TABLE `orders_details`
+  ADD PRIMARY KEY (`detail_id`);
 
 --
 -- Indexes for table `services`
@@ -376,7 +441,7 @@ ALTER TABLE `appoint`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `car_type`
@@ -388,7 +453,7 @@ ALTER TABLE `car_type`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_mem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `datacar`
@@ -409,6 +474,18 @@ ALTER TABLE `emp`
   MODIFY `em_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `orders_details`
+--
+ALTER TABLE `orders_details`
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ไอดี', AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
@@ -418,7 +495,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `serv_status`
 --
 ALTER TABLE `serv_status`
-  MODIFY `stsv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `stsv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `spare_type`
@@ -436,7 +513,7 @@ ALTER TABLE `supply`
 -- AUTO_INCREMENT for table `tb_mem`
 --
 ALTER TABLE `tb_mem`
-  MODIFY `id_mem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_mem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
