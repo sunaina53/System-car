@@ -1,17 +1,17 @@
 <?php 
     include "../conn.php";
-    $cus_id= $_GET['cus_id'];
+    $id_mem= $_GET['id_mem'];
 
-    $sql ="select * from customer where cus_id =$cus_id";
+    $sql ="select * from tb_mem where id_mem =$id_mem";
     $result = mysqli_query($con,$sql);
     $rs = mysqli_fetch_array($result);
 
-    $cus_id = $rs['cus_id'];
-    $cus_name = $rs['cus_name'];
-    $cus_address = $rs['cus_address'];
-    $cus_tel=$rs['cus_tel'];
-    $cus_user =$rs['cus_user'];
-    $cus_pass =$rs['cus_pass'];
+    $id_mem = $rs['id_mem'];
+    $name_mem = $rs['name_mem'];
+    $address_mem = $rs['address_mem'];
+    $tel_mem=$rs['tel_mem'];
+    $userlevel =$rs['userlevel'];
+    $password =$rs['password'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -101,37 +101,37 @@
               <div class="text-center text-muted mb-4">
               </div>
               <form method="post" action="AC_regis_cose.php" enctype=multipart/form-data>
-              <input type="hidden" name ="cus_id" value ="<?=$cus_id?>">
+              <input type="hidden" name ="id_mem" value ="<?=$id_mem?>">
                 <div class="form-group mb-3">
                 <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span for="cus_name" class="input-group-text"><i class="ni ni-badge"></i></span>
+                      <span for="name_mem" class="input-group-text"><i class="ni ni-badge"></i></span>
                     </div>
-                    <input class="form-control" placeholder="ชื่อ-นามสกุล" type="text"name="cus_name"value ="<?=$cus_name?>">
+                    <input class="form-control" placeholder="ชื่อ-นามสกุล" type="text"name="name_mem"value ="<?=$name_mem?>">
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_address"class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                      <span  for="address_mem"class="input-group-text"><i class="ni ni-pin-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="ที่อยู่" type="text" name="cus_address"value ="<?=$cus_address?>">
+                    <input class="form-control" placeholder="ที่อยู่" type="text" name="address_mem"value ="<?=$address_mem?>">
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_tel"class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                      <span  for="tel_mem"class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <input class="form-control" placeholder="เบอร์โทรศัพท์" type="text" name="cus_tel"value ="<?=$cus_tel?>">
+                    <input class="form-control" placeholder="เบอร์โทรศัพท์" type="text" name="tel_mem"value ="<?=$tel_mem?>">
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_user"class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                      <span  for="userlevel"class="input-group-text"><i class="ni ni-circle-08"></i></span>
                     </div>
-                    <label class="form-control"><?=$cus_user?></label>
+                    <label class="form-control"><?=$userlevel?></label>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_pass"class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      <span  for="password"class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="text"name="cus_pass" value ="<?=$cus_pass?>">
+                    <input class="form-control" placeholder="Password" type="text"name="password" value ="<?=$password?>">
                   </div>
                 </div>
                 </div>

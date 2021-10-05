@@ -1,7 +1,7 @@
 <?php
 include "../conn.php";
 
-$sql="SELECT * FROM customer ORDER BY cus_id ASC";
+$sql="SELECT * FROM tb_mem ORDER BY id_mem ASC";
 $result=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
@@ -68,11 +68,11 @@ $result=mysqli_query($con,$sql);
                 <tbody class="list">
                   <?php
                 while($rs=mysqli_fetch_array($result)){
-                    $cus_id=$rs['cus_id'];
-                    $cus_name=$rs['cus_name'];  
-                    $cus_tel=$rs['cus_tel'];
-                    $cus_address=$rs['cus_address'];
-                    $cus_user=$rs['cus_user'];
+                    $id_mem=$rs['id_mem'];
+                    $name_mem=$rs['name_mem'];  
+                    $tel_mem=$rs['tel_mem'];
+                    $address_mem=$rs['address_mem'];
+                    $username=$rs['username'];
                 
                 ?>
                   
@@ -83,27 +83,27 @@ $result=mysqli_query($con,$sql);
                     <th scope="row">
                       <div class="media align-items-center">
                         <div class="media-body">
-                          <span class="name mb-0 text-sm"><?php echo $cus_id?></span>
+                          <span class="name mb-0 text-sm"><?php echo $id_mem?></span>
                         </div>
                       </div>
                     </th>
                     <td class="budget">
-                    <?php echo $cus_name?>
+                    <?php echo $name_mem?>
                     </td>
                     
                     <td class="budget">
-                    <?php echo $cus_tel?>
+                    <?php echo $tel_mem?>
                     </td>
                     
                     <td class="budget">
-                    <?php echo $cus_user?>
+                    <?php echo $username?>
                     </td>
                     <td class="budget">
-                    <?php echo $cus_address?>
+                    <?php echo $address_mem?>
                     </td>
                     <td class="budget">
                     <div class="text-right">
-                      <a href="Ac_regis_cosf.php?cus_id=<?=$cus_id?>" class="btn btn-sm btn-neutral">Profile</a>
+                      <a href="Ac_regis_cosf.php?id_mem=<?=$id_mem?>" class="btn btn-sm btn-neutral">Profile</a>
                     </div>
                     </td>
                     <td class="text-right">
@@ -112,9 +112,9 @@ $result=mysqli_query($con,$sql);
                           <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <!--<a class="dropdown-item" href="Ac_regis_cosf.php?cus_id=<?=$cus_id?>">ดูโปรไฟล์</a>-->
-                          <a class="dropdown-item" href="Ac_regis_cosfe.php?cus_id=<?=$cus_id?>">แก้ไขข้อมูล</a>
-                          <a class="dropdown-item" href="AC_regis_cosd.php?cus_id=<?=$cus_id?>"role="button "onclick=" return confirm('Are you sure want to delete?');">ลบสมาชิก</a>
+                          <!--<a class="dropdown-item" href="Ac_regis_cosf.php?id_mem=<?=$id_mem?>">ดูโปรไฟล์</a>-->
+                          <a class="dropdown-item" href="Ac_regis_cosfe.php?id_mem=<?=$id_mem?>">แก้ไขข้อมูล</a>
+                          <a class="dropdown-item" href="AC_regis_cosd.php?id_mem=<?=$id_mem?>"role="button "onclick=" return confirm('Are you sure want to delete?');">ลบสมาชิก</a>
                         </div>
                       </div>
                     </td>

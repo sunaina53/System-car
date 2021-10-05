@@ -1,16 +1,16 @@
 <?php 
     include "../conn.php";
-    $cus_id= $_GET['cus_id'];
+    $id_mem= $_GET['id_mem'];
 
-    $sql ="select * from customer where cus_id =$cus_id";
+    $sql ="select * from tb_mem where id_mem =$id_mem";
     $result = mysqli_query($con,$sql);
     $rs = mysqli_fetch_array($result);
 
-    $cus_id = $rs['cus_id'];
-    $cus_name = $rs['cus_name'];
-    $cus_address = $rs['cus_address'];
-    $cus_tel=$rs['cus_tel'];
-    $cus_user=$rs['cus_user'];
+    $id_mem = $rs['id_mem'];
+    $name_mem = $rs['name_mem'];
+    $address_mem = $rs['address_mem'];
+    $tel_mem=$rs['tel_mem'];
+    $userlevel=$rs['userlevel'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -103,27 +103,27 @@
                 <div class="form-group mb-3">
                 <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span for="cus_name" class="input-group-text"><i class="ni ni-badge"></i></span>
+                      <span for="name_mem" class="input-group-text"><i class="ni ni-badge"></i></span>
                     </div>
-                    <label class="form-control"><?=$cus_name?></label>
+                    <label class="form-control"><?=$name_mem?></label>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_address"class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                      <span  for="address_mem"class="input-group-text"><i class="ni ni-pin-3"></i></span>
                     </div>
-                    <label class="form-control"><?=$cus_address?></label>
+                    <label class="form-control"><?=$address_mem?></label>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_tel"class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                      <span  for="tel_mem"class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <label class="form-control"><?=$cus_tel?></label>
+                    <label class="form-control"><?=$tel_mem?></label>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_user"class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                      <span  for="userlevel"class="input-group-text"><i class="ni ni-circle-08"></i></span>
                     </div>
-                    <label class="form-control"><?=$cus_user?></label>
+                    <label class="form-control"><?=$userlevel?></label>
                   </div>
                   
                 </div>

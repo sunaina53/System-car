@@ -1,11 +1,11 @@
 
 <?php
 include "../conn.php";
-    $cus_id = $_POST['cus_id'];
-    $cus_name=$_POST['cus_name'];
-    $cus_address=$_POST['cus_address'];
-    $cus_tel = $_POST['cus_tel'];
-    $cus_pass = md5($_POST['cus_pass']);
+    $id_mem = $_POST['id_mem'];
+    $name_mem=$_POST['name_mem'];
+    $address_mem=$_POST['address_mem'];
+    $tel_mem = $_POST['tel_mem'];
+    $password = md5($_POST['password']);
 
 
     
@@ -13,12 +13,12 @@ include "../conn.php";
   
    
     $sql ="UPDATE customer SET
-    cus_id = '$cus_id',
-    cus_name = '$cus_name',
-    cus_address = '$cus_address',
-    cus_tel = '$cus_tel',
-    cus_pass = '$cus_pass',
-    cus_id = '$cus_id' WHERE cus_id ='$cus_id' ";
+    id_mem = '$id_mem',
+    name_mem = '$name_mem',
+    address_mem = '$address_mem',
+    tel_mem = '$tel_mem',
+    password = '$password',
+    id_mem = '$id_mem' WHERE id_mem ='$id_mem' ";
 
 
 

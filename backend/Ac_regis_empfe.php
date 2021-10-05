@@ -131,13 +131,13 @@
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_user"class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                      <span  for="userlevel"class="input-group-text"><i class="ni ni-circle-08"></i></span>
                     </div>
                     <label class="form-control"><?=$em_user?></label>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_pass"class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      <span  for="password"class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
                     <input class="form-control" placeholder="Password" type="text"name="em_pass" value ="<?=$em_pass?>">
                   </div>

@@ -100,35 +100,35 @@
                 <div class="form-group mb-3">
                 <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span for="cus_name" class="input-group-text"><i class="ni ni-badge"></i></span>
+                      <span for="name_mem" class="input-group-text"><i class="ni ni-badge"></i></span>
                     </div>
-                    <input class="form-control" placeholder="ชื่อ-นามสกุล" type="text"name="cus_name" required>
+                    <input class="form-control" placeholder="ชื่อ-นามสกุล" type="text"name="name_mem" required>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_address"class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                      <span  for="address_mem"class="input-group-text"><i class="ni ni-pin-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="ที่อยู่" type="text" name="cus_address" required>
+                    <input class="form-control" placeholder="ที่อยู่" type="text" name="address_mem" required>
                   </div>
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_tel"class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                      <span  for="tel_mem"class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <input class="form-control" placeholder="เบอร์โทรศัพท์" type="text" name="cus_tel" required>
+                    <input class="form-control" placeholder="เบอร์โทรศัพท์" type="text" name="tel_mem" required>
                   </div>
                 </div>
                 <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_user"class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                      <span  for="userlevel"class="input-group-text"><i class="ni ni-circle-08"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Username" type="text"name="cus_user" required>
+                    <input class="form-control" placeholder="Username" type="text"name="userlevel" required>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
-                      <span  for="cus_pass"class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      <span  for="password"class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password"name="cus_pass" required>
+                    <input class="form-control" placeholder="Password" type="password"name="password" required>
                   </div>
                 </div>
                 <div class="text-center">

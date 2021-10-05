@@ -1,9 +1,9 @@
 <?php
 include "../conn.php";
 
-  $id=$_GET['cus_id'];
+  $id=$_GET['id_mem'];
 
- $sql ="delete from customer where cus_id=$id";
+ $sql ="delete from tb_mem where id_mem=$id";
  $result = mysqli_query($con,$sql);
 
  if($result){

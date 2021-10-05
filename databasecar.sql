@@ -92,19 +92,19 @@ INSERT INTO `car_type` (`ctype_id`, `ctype_name`) VALUES
 --
 
 CREATE TABLE `customer` (
-  `cus_id` int(11) NOT NULL,
-  `cus_name` varchar(50) NOT NULL,
-  `cus_address` text NOT NULL,
-  `cus_tel` int(10) NOT NULL,
-  `cus_user` varchar(12) NOT NULL,
-  `cus_pass` varchar(12) NOT NULL
+  `id_mem` int(11) NOT NULL,
+  `name_mem` varchar(50) NOT NULL,
+  `address_mem` text NOT NULL,
+  `tel_mem` int(10) NOT NULL,
+  `userlevel` varchar(12) NOT NULL,
+  `password` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`cus_id`, `cus_name`, `cus_address`, `cus_tel`, `cus_user`, `cus_pass`) VALUES
+INSERT INTO `customer` (`id_mem`, `name_mem`, `address_mem`, `tel_mem`, `userlevel`, `password`) VALUES
 (2, 'bbbb', 'BBBB', 222222, 'bbbbbb', 'bbbbb'),
 (4, 'qqqq', 'qqqq', 956444, 'qqqq', '3bad6af0fa4b');
 
@@ -312,7 +312,7 @@ ALTER TABLE `car_type`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`cus_id`);
+  ADD PRIMARY KEY (`id_mem`);
 
 --
 -- Indexes for table `datacar`
@@ -388,7 +388,7 @@ ALTER TABLE `car_type`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_mem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `datacar`
